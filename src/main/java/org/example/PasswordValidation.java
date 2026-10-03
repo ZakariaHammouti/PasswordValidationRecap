@@ -1,4 +1,4 @@
-import java.util.Locale;
+package org.example;
 
 public class PasswordValidation {
 
