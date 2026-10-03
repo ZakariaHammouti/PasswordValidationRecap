@@ -13,7 +13,6 @@ public class PasswordValidationTest {
 
         //Then
         Assertions.assertFalse(result);
-
     }
 
     @Test
@@ -26,7 +25,6 @@ public class PasswordValidationTest {
 
         //Then
         Assertions.assertTrue(result);
-
     }
 
     @Test
@@ -39,7 +37,6 @@ public class PasswordValidationTest {
 
         //Then
         Assertions.assertFalse(result);
-
     }
 
     @Test
@@ -52,7 +49,41 @@ public class PasswordValidationTest {
 
         //Then
         Assertions.assertTrue(result);
-
     }
 
+    @Test
+    void containsDigit_whenEmpty_ExpectTrue() {
+        //Given
+        String password = "";
+
+        //When
+        boolean result = PasswordValidation.containsDigit(password);
+
+        //Then
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void containsDigit_whenOneDigit_ExpectTrue() {
+        //Given
+        String password = "1";
+
+        //When
+        boolean result = PasswordValidation.containsDigit(password);
+
+        //Then
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void containsDigit_whenMixedText_ExpectTrue() {
+        //Given
+        String password = "asdasd14324[]¶¢[";
+
+        //When
+        boolean result = PasswordValidation.containsDigit(password);
+
+        //Then
+        Assertions.assertTrue(result);
+    }
 }
