@@ -52,7 +52,7 @@ public class PasswordValidationTest {
     }
 
     @Test
-    void containsDigit_whenEmpty_ExpectTrue() {
+    void containsDigit_whenEmpty_ExpectFalse() {
         //Given
         String password = "";
 
@@ -85,5 +85,89 @@ public class PasswordValidationTest {
 
         //Then
         Assertions.assertTrue(result);
+    }
+
+    @Test
+    void containsLowerAndUpperCaseCharacters_whenEmpty_ExpectTFalse() {
+        //Given
+        String password = "";
+
+        //When
+        boolean result = PasswordValidation.containsLowerAndUpperCaseCharacters(password);
+
+        //Then
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void containsLowerAndUpperCaseCharacters_whenAa_ExpectTrue() {
+        //Given
+        String password = "Aa";
+
+        //When
+        boolean result = PasswordValidation.containsLowerAndUpperCaseCharacters(password);
+
+        //Then
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void containsLowerAndUpperCaseCharacters_whena_ExpectFalse() {
+        //Given
+        String password = "a";
+
+        //When
+        boolean result = PasswordValidation.containsLowerAndUpperCaseCharacters(password);
+
+        //Then
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void containsLowerAndUpperCaseCharacters_whenA_ExpectFalse() {
+        //Given
+        String password = "A";
+
+        //When
+        boolean result = PasswordValidation.containsLowerAndUpperCaseCharacters(password);
+
+        //Then
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void isWellKnownPassword_whenEasyPassword_ExpectTrue() {
+        //Given
+        String password = "123456";
+
+        //When
+        boolean result = PasswordValidation.isWellKnownPassword(password);
+
+        //Then
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void isWellKnownPassword_whenEasyPassword2_ExpectTrue() {
+        //Given
+        String password = "password";
+
+        //When
+        boolean result = PasswordValidation.isWellKnownPassword(password);
+
+        //Then
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void isWellKnownPassword_whenEasyPassword2_ExpectFalse() {
+        //Given
+        String password = "as_23438AHAHDBCJENC54210654894";
+
+        //When
+        boolean result = PasswordValidation.isWellKnownPassword(password);
+
+        //Then
+        Assertions.assertFalse(result);
     }
 }
