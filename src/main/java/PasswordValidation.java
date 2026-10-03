@@ -40,5 +40,12 @@ public class PasswordValidation {
         }
         return false;
     }
+
+    public static boolean isSafe(String password) {
+        return isAtLeast8CharactersLong(password)
+                && containsLowerAndUpperCaseCharacters(password)
+                && containsDigit(password)
+                && !isWellKnownPassword(password);
+    }
 }
 
