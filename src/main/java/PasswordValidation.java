@@ -41,11 +41,17 @@ public class PasswordValidation {
         return false;
     }
 
+    public static boolean containsSpecialCharacters(String password) {
+        return password.matches(".*[^0-9a-zA-Z].*");
+    }
+
+
     public static boolean isSafe(String password) {
         return isAtLeast8CharactersLong(password)
                 && containsLowerAndUpperCaseCharacters(password)
                 && containsDigit(password)
-                && !isWellKnownPassword(password);
+                && !isWellKnownPassword(password)
+                && containsSpecialCharacters(password);
     }
 }
 

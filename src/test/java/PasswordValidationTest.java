@@ -231,4 +231,29 @@ public class PasswordValidationTest {
         Assertions.assertFalse(result);
     }
 
+    @Test
+    void isSafe_whenLongLowerCaseAndUpperCaseWithDigitNotWellKnown_ExpectFalse() {
+        //Given
+        String password = "jdifoLLSLCNIOWW12345saas";
+
+        //When
+        boolean result = PasswordValidation.isSafe(password);
+
+        //Then
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void containsSpecialCharacters_whenEmpty_ExpectFalse() {
+        //Given
+        String password = "";
+
+        //When
+        boolean result = PasswordValidation.containsSpecialCharacters(password);
+
+        //Then
+        Assertions.assertFalse(result);
+    }
+
+
 }
